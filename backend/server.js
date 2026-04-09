@@ -10,6 +10,7 @@ import orderRoutes from './routes/orderRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import reviewRoutes from './routes/reviewRoutes.js';
 import couponRoutes from './routes/couponRoutes.js';
+import seedRoutes from './routes/seedRoutes.js';
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use('/api/wishlist', wishlistRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/coupons', couponRoutes);
+app.use('/api/seed', seedRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'Kapad Khana API is running' });
