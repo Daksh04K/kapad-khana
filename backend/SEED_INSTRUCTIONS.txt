@@ -1,0 +1,56 @@
+HOW TO ADD DEMO PRODUCTS TO YOUR DATABASE
+==========================================
+
+Follow these simple steps to populate your database with 70+ demo products:
+
+STEP 1: Open Command Prompt
+- Press Windows + R
+- Type "cmd" and press Enter
+
+STEP 2: Navigate to Backend Folder
+- Type: cd path\to\your\project\backend
+- Press Enter
+
+STEP 3: Run the Seed Script
+- Type: node seedProducts.js
+- Press Enter
+
+STEP 4: Wait for Completion
+- You will see messages:
+  * "MongoDB Connected..."
+  * "Existing products deleted..."
+  * "Demo products added successfully!"
+  * "Total products: 70"
+
+STEP 5: Refresh Your Website
+- Go to http://localhost:3000
+- You should now see all the demo products!
+
+WHAT PRODUCTS ARE INCLUDED?
+============================
+- Men's Fashion: 12 products (shirts, jeans, blazers, t-shirts, etc.)
+- Women's Fashion: 12 products (kurtis, jeans, dresses, sarees, etc.)
+- Kids Fashion: 12 products (boys & girls clothing)
+- Accessories: 10 products (wallets, bags, watches, jewelry, etc.)
+- Footwear: 10 products (formal shoes, heels, sneakers, sandals, etc.)
+
+Each product includes:
+- Name, Brand, Price, Original Price, Discount %
+- Sizes (S, M, L, XL or shoe sizes)
+- Material, Color, Fit type
+- Stock quantity
+- Rating and review count
+- High-quality placeholder images
+
+TROUBLESHOOTING:
+================
+If you get an error:
+1. Make sure MongoDB is running
+2. Make sure your .env file has correct MONGO_URI
+3. Make sure you're in the backend folder
+4. Try running: npm install mongoose
+
+Need to add more products?
+- Edit backend/seedProducts.js
+- Add more product objects to the array
+- Run the seed script again

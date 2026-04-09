@@ -1,0 +1,492 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #000000;
+  --secondary: #1a1a1a;
+  --accent: #d4af37;
+  --accent-light: #f4e4c1;
+  --background: #fafafa;
+  --card-bg: #ffffff;
+  --text: #2d2d2d;
+  --text-light: #6b6b6b;
+  --border: #e5e5e5;
+  --success: #10b981;
+  --error: #ef4444;
+  --gold: #d4af37;
+  --rose-gold: #b76e79;
+}
+
+[data-theme="dark"] {
+  --primary: #000000;
+  --secondary: #1a1a1a;
+  --accent: #d4af37;
+  --accent-light: #3a3000;
+  --background: #121212;
+  --card-bg: #1e1e1e;
+  --text: #e0e0e0;
+  --text-light: #9ca3af;
+  --border: #2e2e2e;
+  --success: #10b981;
+  --error: #ef4444;
+  --gold: #d4af37;
+  --rose-gold: #b76e79;
+}
+
+body {
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.1px;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+/* Back Button */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.back-button:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+
+.back-button svg {
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--primary);
+  border: 1px solid var(--gold);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.btn-secondary {
+  background-color: var(--secondary);
+  color: white;
+  border: 1px solid var(--secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 0;
+  padding: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+  border-color: var(--gold);
+}
+
+.input-group {
+  margin-bottom: 12px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--text);
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s ease;
+  background-color: #fafafa;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px var(--gold);
+  background-color: white;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: var(--error);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.success-message {
+  background-color: #d1fae5;
+  color: var(--success);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* ===== DARK MODE OVERRIDES ===== */
+[data-theme="dark"] body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+[data-theme="dark"] .input-group input,
+[data-theme="dark"] .input-group textarea,
+[data-theme="dark"] .input-group select {
+  background-color: #2a2a2a;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+[data-theme="dark"] .input-group input:focus,
+[data-theme="dark"] .input-group textarea:focus,
+[data-theme="dark"] .input-group select:focus {
+  background-color: #2e2e2e;
+}
+
+[data-theme="dark"] .card {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .btn-outline {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+  background-color: var(--text);
+  color: var(--background);
+}
+
+/* Dark mode: category bar */
+[data-theme="dark"] .navbar-categories {
+  background-color: #1a1a1a;
+  border-color: #2e2e2e;
+}
+
+[data-theme="dark"] .category-item {
+  color: #d1d5db;
+}
+
+[data-theme="dark"] .category-item:hover {
+  color: var(--gold);
+}
+
+/* Dark mode: search dropdown */
+[data-theme="dark"] .search-dropdown {
+  background: #1e1e1e;
+  border-color: #2e2e2e;
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+  background-color: #2a2a2a;
+}
+
+[data-theme="dark"] .recent-item span,
+[data-theme="dark"] .suggestion-name {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .dropdown-section {
+  border-color: #2e2e2e;
+}
+
+[data-theme="dark"] .dropdown-view-all:hover {
+  background-color: #2a2000;
+}
+
+/* Dark mode: product cards */
+[data-theme="dark"] .product-card {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .product-image {
+  background-color: #2a2a2a;
+}
+
+[data-theme="dark"] .image-skeleton {
+  background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+}
+
+/* Dark mode: sidebar */
+[data-theme="dark"] .sidebar {
+  background-color: #1e1e1e;
+}
+
+[data-theme="dark"] .sidebar-links a,
+[data-theme="dark"] .sidebar-links button {
+  color: var(--text);
+}
+
+[data-theme="dark"] .sidebar-links a:hover,
+[data-theme="dark"] .sidebar-links button:hover {
+  background-color: #2a2a2a;
+}
+
+[data-theme="dark"] .sidebar-divider {
+  background-color: var(--border);
+}
+
+/* Dark mode: breadcrumb */
+[data-theme="dark"] .breadcrumb {
+  background-color: #1a1a1a;
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .breadcrumb-item a {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .breadcrumb-item.active span {
+  color: var(--text);
+}
+
+/* Dark mode: filters sidebar */
+[data-theme="dark"] .filters-sidebar {
+  background-color: #1e1e1e;
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .filter-section {
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .price-inputs input {
+  background-color: #2a2a2a;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+[data-theme="dark"] .size-filter-btn,
+[data-theme="dark"] .rating-filter-btn {
+  background-color: #2a2a2a;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* Dark mode: related / recently viewed sections */
+[data-theme="dark"] .related-products-section,
+[data-theme="dark"] .recently-viewed-section {
+  background-color: #1a1a1a;
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .related-product-card,
+[data-theme="dark"] .recent-product-card {
+  background-color: #1e1e1e;
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .related-product-image,
+[data-theme="dark"] .recent-product-image {
+  background-color: #2a2a2a;
+}
+
+[data-theme="dark"] .scroll-btn {
+  background-color: #2a2a2a;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* Dark mode: modals */
+[data-theme="dark"] .modal {
+  background-color: #1e1e1e;
+  color: var(--text);
+}
+
+[data-theme="dark"] .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Dark mode: footer */
+[data-theme="dark"] .footer {
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+}
+
+/* Dark mode: features section */
+[data-theme="dark"] .features-section {
+  background-color: #1a1a1a;
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .feature-card {
+  background-color: #1e1e1e;
+  border-color: var(--border);
+}
+
+/* Dark mode: deals section */
+[data-theme="dark"] .deals-section {
+  background-color: var(--background);
+}
+
+[data-theme="dark"] .deal-card {
+  background-color: #1e1e1e;
+  border-color: var(--border);
+}
+
+/* Dark mode: newsletter */
+[data-theme="dark"] .newsletter-section {
+  background: linear-gradient(135deg, #1a1a00 0%, #0a0a0a 100%);
+}
+
+[data-theme="dark"] .newsletter-form input {
+  background-color: #2a2a2a;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* Dark mode: cart, checkout, orders pages */
+[data-theme="dark"] .cart-item,
+[data-theme="dark"] .order-card,
+[data-theme="dark"] .checkout-section,
+[data-theme="dark"] .order-summary {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+}
+
+/* Dark mode: profile page */
+[data-theme="dark"] .profile-card {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+}
+
+/* Dark mode: admin table */
+[data-theme="dark"] .admin-table table {
+  background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .admin-table th {
+  background-color: #2a2a2a;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .admin-table td {
+  border-color: var(--border);
+  color: var(--text);
+}
+
+[data-theme="dark"] .admin-table tr:hover {
+  background-color: #2a2a2a;
+}
+
+/* Smooth theme transition */
+*, *::before, *::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}

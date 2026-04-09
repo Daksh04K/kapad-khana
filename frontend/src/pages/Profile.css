@@ -1,0 +1,343 @@
+.profile-page {
+  padding: 20px 0;
+  min-height: calc(100vh - 70px);
+  background-color: var(--background);
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Sidebar */
+.profile-sidebar {
+  background-color: var(--card-bg);
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+}
+
+.profile-header {
+  text-align: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.profile-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #f4e4c1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  color: var(--primary);
+}
+
+.profile-header h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--primary);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.profile-email {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.profile-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(135deg, var(--gold), #f4e4c1);
+  color: var(--primary);
+  font-size: 9px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+}
+
+.stat-item svg,
+.stat-currency {
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.stat-value {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.stat-label {
+  display: block;
+  font-size: 10px;
+  color: var(--text-light);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.profile-menu {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.menu-item:hover {
+  background-color: var(--background);
+  color: var(--gold);
+}
+
+.menu-item.active {
+  background-color: var(--gold);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.menu-item.admin-link {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.profile-logout {
+  padding-top: 16px;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+}
+
+.profile-info {
+  padding-top: 16px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--text-light);
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Main Content */
+.profile-content {
+  background-color: var(--card-bg);
+  border-radius: 4px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.content-section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--primary);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.section-description {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-bottom: 24px;
+}
+
+.profile-form {
+  max-width: 600px;
+}
+
+.form-row {
+  margin-bottom: 16px;
+}
+
+.profile-form .input-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.profile-form .input-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.2s;
+}
+
+.profile-form .input-group input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+}
+
+.profile-form .input-group small {
+  display: block;
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--text-light);
+}
+
+.profile-form .btn {
+  margin-top: 8px;
+}
+
+.security-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background-color: var(--background);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border-left: 3px solid var(--gold);
+}
+
+.security-info svg {
+  color: var(--gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.security-info h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--primary);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.security-info p {
+  font-size: 11px;
+  color: var(--text-light);
+}
+
+.security-tips {
+  margin-top: 24px;
+  padding: 16px;
+  background-color: var(--background);
+  border-radius: 4px;
+}
+
+.security-tips h4 {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--primary);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.security-tips ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.security-tips li {
+  font-size: 11px;
+  color: var(--text);
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.security-tips li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .profile-sidebar {
+    position: static;
+  }
+
+  .profile-content {
+    padding: 16px;
+  }
+
+  .content-section h3 {
+    font-size: 16px;
+  }
+}
