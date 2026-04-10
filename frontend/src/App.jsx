@@ -51,7 +51,7 @@ function App() {
           <Route path="/profile" element={<><Navbar /><ProtectedRoute><Profile /></ProtectedRoute><Footer /></>} />
         </Routes>
         <ScrollToTop />
-        <ToastContainer position="top-right" autoClose={3000} />
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
       </div>
     </Router>
   );

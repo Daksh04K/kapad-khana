@@ -21,10 +21,13 @@ const Checkout = () => {
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const safeItems = (cart && Array.isArray(cart.items)) ? cart.items.filter(i => i && i.product) : [];
-  const subtotal = safeItems.reduce((t, i) => t + ((i.product.price || 0) * i.quantity), 0);
-  const discount = appliedCoupon ? (appliedCoupon.discount || 0) : 0;
-  const finalTotal = subtotal - discount > 0 ? subtotal - discount : 0;
+  // Safe calculations - never crash
+  const safeItems = (cart && Array.isArray(cart.items))
+    ? cart.items.filter(i => i && i.product && i.product.price)
+    : [];
+  const subtotal = safeItems.reduce((t, i) => t + (Number(i.product.price) * Number(i.quantity)), 0);
+  const discount = (appliedCoupon && appliedCoupon.discount) ? Number(appliedCoupon.discount) : 0;
+  const finalTotal = Math.max(0, subtotal - discount);
 
   const handleApplyCoupon = async () => {
     if (!couponCode.trim()) return;
@@ -52,11 +55,13 @@ const Checkout = () => {
       await clearCart();
       navigate("/order-success/" + order._id);
     } catch (error) {
-      toast.error(error.response?.data?.message || "Order failed");
+      toast.error(error.response?.data?.message || "Order failed. Please try again.");
     } finally { setLoading(false); }
   };
 
-  if (!cart || safeItems.length === 0) { navigate("/cart"); return null; }
+  // Show loading while cart is being fetched
+  if (!cart) return <div className="loading"><div className="spinner"></div></div>;
+  if (safeItems.length === 0) { navigate("/cart"); return null; }
 
   return (
     <div className="checkout-page">
