@@ -21,10 +21,7 @@ const Checkout = () => {
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  // Safe calculations - never crash
-  const safeItems = (cart && Array.isArray(cart.items))
-    ? cart.items.filter(i => i && i.product && i.product.price)
-    : [];
+  const safeItems = (cart && Array.isArray(cart.items)) ? cart.items.filter(i => i && i.product && i.product.price) : [];
   const subtotal = safeItems.reduce((t, i) => t + (Number(i.product.price) * Number(i.quantity)), 0);
   const discount = (appliedCoupon && appliedCoupon.discount) ? Number(appliedCoupon.discount) : 0;
   const finalTotal = Math.max(0, subtotal - discount);
@@ -59,9 +56,10 @@ const Checkout = () => {
     } finally { setLoading(false); }
   };
 
-  // Show loading while cart is being fetched
   if (!cart) return <div className="loading"><div className="spinner"></div></div>;
   if (safeItems.length === 0) { navigate("/cart"); return null; }
+
+  const INR = (n) => "Rs." + n;
 
   return (
     <div className="checkout-page">
@@ -89,7 +87,7 @@ const Checkout = () => {
                 <label className="payment-option"><input type="radio" value="Online" checked={paymentMethod === "Online"} onChange={e => setPaymentMethod(e.target.value)} /><span>Online Payment (Demo)</span></label>
               </div>
             </div>
-            <button type="submit" className="btn btn-primary place-order-btn" disabled={loading}>{loading ? "Processing..." : "Place Order - Rs." + finalTotal}</button>
+            <button type="submit" className="btn btn-primary place-order-btn" disabled={loading}>{loading ? "Processing..." : "Place Order - " + INR(finalTotal)}</button>
           </form>
           <div className="order-summary">
             <h2>Order Summary</h2>
@@ -98,7 +96,7 @@ const Checkout = () => {
                 <div key={item._id} className="summary-item">
                   <img src={item.product.images[0]} alt={item.product.name} />
                   <div className="item-info"><p>{item.product.name}</p><p>Size: {item.size} | Qty: {item.quantity}</p></div>
-                  <span>Rs.{item.product.price * item.quantity}</span>
+                  <span>{INR(item.product.price * item.quantity)}</span>
                 </div>
               ))}
             </div>
@@ -112,17 +110,17 @@ const Checkout = () => {
               ) : (
                 <div className="coupon-applied">
                   <FiCheck className="check-icon" />
-                  <div><span className="coupon-code-tag">{appliedCoupon.code}</span><span className="coupon-savings">You save Rs.{appliedCoupon.discount}</span></div>
+                  <div><span className="coupon-code-tag">{appliedCoupon.code}</span><span className="coupon-savings">You save {INR(appliedCoupon.discount)}</span></div>
                   <button type="button" className="remove-coupon" onClick={() => { setAppliedCoupon(null); setCouponCode(""); }}><FiX /></button>
                 </div>
               )}
             </div>
             <div className="price-breakdown">
-              <div className="price-row"><span>Subtotal</span><span>Rs.{subtotal}</span></div>
-              {discount > 0 && <div className="price-row discount-row"><span>Coupon Discount</span><span>- Rs.{discount}</span></div>}
+              <div className="price-row"><span>Subtotal</span><span>{INR(subtotal)}</span></div>
+              {discount > 0 && <div className="price-row discount-row"><span>Coupon Discount</span><span>- {INR(discount)}</span></div>}
               <div className="price-row"><span>Shipping</span><span className="free-shipping">FREE</span></div>
-              <div className="price-row total-row"><span>Total</span><span>Rs.{finalTotal}</span></div>
-              {discount > 0 && <div className="savings-banner">You are saving Rs.{discount} on this order!</div>}
+              <div className="price-row total-row"><span>Total</span><span>{INR(finalTotal)}</span></div>
+              {discount > 0 && <div className="savings-banner">You are saving {INR(discount)} on this order!</div>}
             </div>
           </div>
         </div>
