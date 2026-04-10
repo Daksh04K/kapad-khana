@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+﻿import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
@@ -177,7 +177,7 @@ const Checkout = () => {
             </div>
 
             <button type="submit" className="btn btn-primary place-order-btn" disabled={loading}>
-              {loading ? 'Processing...' : `Place Order · ₹${finalTotal}`}
+              {loading ? 'Processing...' : `Place Order Â· â‚¹${finalTotal}`}
             </button>
           </form>
 
@@ -192,7 +192,7 @@ const Checkout = () => {
                     <p>{item.product.name}</p>
                     <p>Size: {item.size} | Qty: {item.quantity}</p>
                   </div>
-                  <span>₹{item.product.price * item.quantity}</span>
+                  <span>â‚¹{item.product.price * item.quantity}</span>
                 </div>
               ))}
             </div>
@@ -218,7 +218,7 @@ const Checkout = () => {
                   <FiCheck className="check-icon" />
                   <div>
                     <span className="coupon-code-tag">{appliedCoupon.code}</span>
-                    <span className="coupon-savings">You save ₹{appliedCoupon.discount}</span>
+                    <span className="coupon-savings">You save â‚¹{appliedCoupon.discount}</span>
                   </div>
                   <button type="button" className="remove-coupon" onClick={handleRemoveCoupon}>
                     <FiX />
@@ -231,12 +231,12 @@ const Checkout = () => {
             <div className="price-breakdown">
               <div className="price-row">
                 <span>Subtotal</span>
-                <span>₹{subtotal}</span>
+                <span>â‚¹{subtotal}</span>
               </div>
               {discount > 0 && (
                 <div className="price-row discount-row">
                   <span>Coupon Discount</span>
-                  <span>- ₹{discount}</span>
+                  <span>- â‚¹{discount}</span>
                 </div>
               )}
               <div className="price-row">
@@ -245,11 +245,11 @@ const Checkout = () => {
               </div>
               <div className="price-row total-row">
                 <span>Total</span>
-                <span>₹{finalTotal}</span>
+                <span>â‚¹{finalTotal}</span>
               </div>
               {discount > 0 && (
                 <div className="savings-banner">
-                  🎉 You're saving ₹{discount} on this order!
+                  ðŸŽ‰ You're saving â‚¹{discount} on this order!
                 </div>
               )}
             </div>
