@@ -12,7 +12,7 @@ export const createOrder = async (req, res) => {
       items,
       shippingAddress,
       paymentMethod,
-      totalPrice: finalTotal,
+      totalPrice,
       couponId: couponId || null,
       discount: discount || 0,
       paymentStatus: paymentMethod === 'COD' ? 'Pending' : 'Paid',
